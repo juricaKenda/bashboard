@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.bashboard.model.PageContainer;
 import com.bashboard.services.PageContainerDelegatingService;
+import com.bashboard.services.PageContainerInsertingService;
 import com.bashboard.services.PageContainerLoadingService;
 
 @Controller
@@ -16,10 +17,14 @@ public class RestRequestController {
 
 	@Autowired
 	private PageContainerDelegatingService pageContainerDelegatingService;
-
+	@Autowired
+	private PageContainerInsertingService pageContainerInsertingService;
 	
 	@GetMapping("/")
 	public String displayFavicon(Model model) {
+		//TODO remove later and import from input
+		pageContainerInsertingService.insertAllDefault();
+		
 		HashMap<String, List<PageContainer>> defaultClusters = pageContainerDelegatingService.getDefaultClusters();
 		model.addAttribute("centerClusterContainers",defaultClusters.get("centerClusterContainers"));
 		model.addAttribute("leftClusterContainers",defaultClusters.get("leftClusterContainers"));
