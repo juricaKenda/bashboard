@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Bashboard</title>
+</head>
+<style>
+    h1 {
+        font-family: Impact;
+        text-align: center;
+    }
+    
+    a {
+        font-family: Courier;
+        text-decoration: none;
+        color: black;
+        font-size: 150%;
+    }
+    
+    img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .pageNameAlias:hover {
+        animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+    
+    @keyframes shake {
+        10%,
+        90% {
+            transform: translate3d(-1px, 0, 0);
+        }
+        20%,
+        80% {
+            transform: translate3d(2px, 0, 0);
+        }
+        30%,
+        50%,
+        70% {
+            transform: translate3d(-4px, 0, 0);
+        }
+        40%,
+        60% {
+            transform: translate3d(4px, 0, 0);
+        }
+    }
+    
+    input[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        font-family: Courier;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    
+    input[type=text]:focus {
+        width: 25%;
+        outline: none;
+    }
+    
+    .center-content-wrapper {
+        text-align: center;
+    }
+    
+    table {
+        display: inline-table;
+        text-align: left;
+    }
+    
+   
+</style>
+<h1>Bashboard</h1>
+
+<form align="center">
+    <input type="text">
+</form>
+<br>
+
+<body>
+    <div class="center-content-wrapper">
+        <table class="leftCluster" align="left">
+            <tbody>
+                <tr th:each="container : ${leftClusterContainers}">
+                    <td><img th:src="${container.icon}"></img>
+                    </td>
+                    <td></td>
+                    <td class="pageNameAlias">
+                        <a th:href="@{${container.link}}" th:text="${container.alias}" target="_blank"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="centerCluster" align="center">
+            <tbody>
+                <tr th:each="container : ${centerClusterContainers}">
+                    <td><img th:src="${container.icon}"></img>
+                    </td>
+                    <td></td>
+                    <td class="pageNameAlias">
+                        <a th:href="@{${container.link}}" th:text="${container.alias}" target="_blank"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="rightCluster" align="right">
+            <tbody>
+                <tr th:each="container : ${rightClusterContainers}">
+                    <td><img th:src="${container.icon}"></img>
+                    </td>
+                    <td></td>
+                    <td class="pageNameAlias">
+                        <a th:href="@{${container.link}}" th:text="${container.alias}" target="_blank"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
