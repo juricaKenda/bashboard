@@ -15,7 +15,7 @@ public class PageContainerLoadingService {
 	private PageContainerRepository pageContainerRepository;
 
 	public List<PageContainer> loadPageContainers() {
-		return pageContainerRepository.getAllPageContainers();
+		return pageContainerRepository.getAllContainers();
 	}
 	
 }
