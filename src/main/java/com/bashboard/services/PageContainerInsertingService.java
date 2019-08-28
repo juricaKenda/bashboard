@@ -40,7 +40,10 @@ public class PageContainerInsertingService {
 
 	public void insertAllDefault() {
 		List<PageContainer> defaultPageContainers = getDefaultPageContainers();
-		defaultPageContainers.forEach(container -> insertPageContainer(container.getLink(),container.getAlias()));
+		if(containerRepository.isEmpty()) {
+			defaultPageContainers.forEach(container -> insertPageContainer(container.getLink(),container.getAlias()));	
+		}
+		
 	}
 	
 	private List<PageContainer> getDefaultPageContainers() {
