@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,10 +20,12 @@ public class PageContainerDelegatingService {
 	private PageContainerLoadingService pageContainerLoadingService;
 	
 	public HashMap<String, List<PageContainer>> getDefaultClusters(){
-		List<PageContainer> pageContainers = new ArrayList<>(pageContainerLoadingService.loadPageContainers());
+		List<PageContainer> pageContainers = pageContainerLoadingService.loadPageContainers();
+		Collections.shuffle(pageContainers);
 		List<PageContainer> leftSideContainers = new ArrayList<>();
 		List<PageContainer> rightSideContainers = new ArrayList<>();
 		List<PageContainer> centerContainers = new ArrayList<>();
+		
 		
 		int currentIndex = 0;
 		if(pageContainers.size() <= MINIMUM_CENTER_CLUSTER_SIZE) {
