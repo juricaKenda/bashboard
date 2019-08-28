@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.bashboard.model.PageContainer;
 import com.bashboard.services.PageContainerDelegatingService;
 import com.bashboard.services.PageContainerInsertingService;
@@ -26,10 +28,7 @@ public class RestRequestController {
 		pageContainerInsertingService.insertAllDefault();
 		
 		HashMap<String, List<PageContainer>> defaultClusters = pageContainerDelegatingService.getDefaultClusters();
-		model.addAttribute("centerClusterContainers",defaultClusters.get("centerClusterContainers"));
-		model.addAttribute("leftClusterContainers",defaultClusters.get("leftClusterContainers"));
-		model.addAttribute("rightClusterContainers",defaultClusters.get("rightClusterContainers"));
-		
+		model.addAllAttributes(defaultClusters);
 		return "defaultCluster";
 	}
 }
