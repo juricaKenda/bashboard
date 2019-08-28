@@ -28,10 +28,10 @@ public class PageContainerInsertingService {
 	}
 	
 	private @NonNull String limitSize(String alias) {
-		if(alias.length() <= 10) {
+		if(alias.length() <= 14) {
 			return alias;
 		}
-		return alias.substring(0, 8)+"..";
+		return alias.substring(0, 12)+"..";
 	}
 
 	private void insert(PageContainer container) {
@@ -59,13 +59,20 @@ public class PageContainerInsertingService {
 		PageContainer facebookContainer = new PageContainer("https://www.facebook.com/favicon.ico","https://www.facebook.com","Facebook");
 		PageContainer ebayContainer = new PageContainer("https://www.ebay.com/favicon.ico","https://www.ebay.com","Ebay");
 		PageContainer amazonContainer = new PageContainer("https://www.amazon.com/favicon.ico","https://www.amazon.com","Amazon");
+		PageContainer zaraContainer = new PageContainer("http://www.zara.com/favicon.ico","http://www.zara.com","Zara");
+		PageContainer bookDepositoryContainer = new PageContainer("https://www.bookdepository.com/favicon.ico","https://www.bookdepository.com","Book Depository");
+		PageContainer MITtechnologyReviewContainer = new PageContainer("https://www.technologyreview.com/favicon.ico","https://www.technologyreview.com","MIT Technology Review");
+		PageContainer businessInsiderContainer = new PageContainer("https://www.businessinsider.com/favicon.ico","https://www.businessinsider.com","Business Insider");
+		PageContainer refactoringGuruContainer = new PageContainer("https://refactoring.guru/favicon.ico","https://refactoring.guru","Refactoring Guru");
 		
 		//TODO add a method for validating and updating the length of an alias
 		//TODO replace with real database and add REST end point for inputing new pages
 		return Arrays.asList(stackOverflowContainer,fiverrContainer,gmailContainer,
 				devtoContainer,githubContainer,linkedInContainer,
 				mediumContainer,youtubeContainer,asosContainer,
-				facebookContainer,ebayContainer,amazonContainer);
+				facebookContainer,ebayContainer,amazonContainer,
+				zaraContainer,bookDepositoryContainer,MITtechnologyReviewContainer,
+				businessInsiderContainer,refactoringGuruContainer);
 	}
 	
 	
