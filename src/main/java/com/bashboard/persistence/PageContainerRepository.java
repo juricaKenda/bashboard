@@ -26,4 +26,9 @@ public class PageContainerRepository implements ContainerRepository {
 		mockRepository.add(container);
 		
 	}
+
+	@Override
+	public boolean isEmpty() {
+		return mockRepository.isEmpty();
+	}
 }
