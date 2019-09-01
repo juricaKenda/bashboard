@@ -81,14 +81,18 @@
     
    
 </style>
-<h1>Bashboard</h1>
-
-<form align="center">
-    <input type="text">
-</form>
-<br>
 
 <body>
+	
+	<h1>Bashboard</h1>
+
+	<form action="#" th:action="@{/board}" th:object="${inputContainer}" method="post" align="center">
+    	<input type="text" th:field="*{text}">
+	</form>
+	<br>
+
+
+
     <div class="center-content-wrapper">
         <table class="leftCluster" align="left">
             <tbody>
