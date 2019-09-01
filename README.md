@@ -1,10 +1,12 @@
 # Bashboard - Dev Designed Dashboard
 
+## Bash-like CLI
+![](/visuals/Bashboard-command-example.gif)
+
 ## Interactive Design
 ![](/visuals/Bashboard-welcomescreen.gif)
 
-## Bash-like Command Line Interface
-![](/visuals/Bashboard-command-example.gif)
+![](/visuals/Bashboard-open-page.gif)
 
 
 
