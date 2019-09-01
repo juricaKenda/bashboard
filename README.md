@@ -1,5 +1,13 @@
 # Bashboard - Dev Designed Dashboard
 
+## Interactive Design
+![](/visuals/Bashboard-welcomescreen.gif)
+
+## Bash-like Command Line Interface
+![](/visuals/Bashboard-command-example.gif)
+
+
+
 ## Authors
 
 * **Jurica Kenda** - *Initial work* - [JuricaKenda](https://github.com/juricaKenda)
