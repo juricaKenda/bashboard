@@ -19,8 +19,7 @@ public class PageContainerDelegatingService {
 	@Autowired
 	private PageContainerLoadingService pageContainerLoadingService;
 	
-	public HashMap<String, List<PageContainer>> getDefaultClusters(){
-		List<PageContainer> pageContainers = pageContainerLoadingService.loadPageContainers();
+	public HashMap<String, List<PageContainer>> getClusters(List<PageContainer> pageContainers){
 		Collections.shuffle(pageContainers);
 		List<PageContainer> leftSideContainers = new ArrayList<>();
 		List<PageContainer> rightSideContainers = new ArrayList<>();
@@ -68,6 +67,11 @@ public class PageContainerDelegatingService {
 		map.put("rightClusterContainers",rightSideContainers);
 		
 		return map;
+	}
+	
+	public HashMap<String, List<PageContainer>> getDefaultClusters(){
+		List<PageContainer> pageContainers = pageContainerLoadingService.loadPageContainers();
+		return getClusters(pageContainers);
 	}
 	
 }
