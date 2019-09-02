@@ -1,9 +1,10 @@
-# Bashboard - Dev Designed Dashboard
+# Bashboard - Dashboard For Developers
 ![](/visuals/Bashboard-command-example.gif)
 
 ## About
-
-
+Interactive bookmark manager made for developers! Bashboard enables you to use _bash_-like commands to navigate through your website bookmarks.  
+The goal of this project was to create a fun enviroment for organizing bookmarks on my laptop.  
+Additionally, when deployed to a remote server, it will give me the leisure of having all my bookmarks available on any device which has internet access.
 
 
 
