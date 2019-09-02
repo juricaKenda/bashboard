@@ -19,7 +19,7 @@ import lombok.experimental.Wither;
 @ToString
 public class DisplayingCommand extends Command{
 
-	private final List<String> acceptableArgSignatures = Arrays.asList("rgx");
+	private final List<String> acceptableArgSignatures = Arrays.asList("rgx","tag");
 	
 	@Override
 	public boolean accepts(String argumentSignature) {
@@ -42,7 +42,7 @@ public class DisplayingCommand extends Command{
 
 	private List<Predicate<PageContainer>> makeRelevantPredicateChain(List<Argument> arguments) {
 		return arguments.stream()
-				.map(argument -> (RegularExpressionArgument)argument)
+				.map(argument -> (DisplayingArgument)argument)
 				.map(argument->argument.getPredicate())
 				.collect(Collectors.toList());
 	}

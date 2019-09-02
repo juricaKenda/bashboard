@@ -9,13 +9,14 @@ import lombok.Value;
 
 @Value
 @ToString
-public class RegularExpressionArgument extends Argument {
+public class RegularExpressionArgument extends Argument implements DisplayingArgument{
 
 	@Override
 	String getSignature() {
 		return "rgx";
 	}
 
+	@Override
 	public Predicate<PageContainer> getPredicate(){
 		return p -> p.getLink().contains(argument);
 	}
