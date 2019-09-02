@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bashboard.commandline.model.Argument;
 import com.bashboard.commandline.model.RegularExpressionArgument;
+import com.bashboard.commandline.model.TagArgument;
 
 import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 
@@ -18,6 +19,7 @@ public class ArgumentRepository {
 	private HashMap<String, Argument> initializeRepository() {
 		HashMap<String, Argument> map = new HashMap<>();
 		map.put("rgx",new RegularExpressionArgument());
+		map.put("tag",new TagArgument());
 		return map;
 	}
 	
