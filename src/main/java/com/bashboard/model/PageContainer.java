@@ -1,5 +1,8 @@
 package com.bashboard.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bashboard.model.PageContainer.PageContainerBuilder;
 
 import lombok.AllArgsConstructor;
@@ -18,6 +21,7 @@ public class PageContainer{
 	private final String link; 
 	@NonNull
 	private final String alias;
-	
+	@NonNull
+	private final List<Tag> tags;
 	
 }
