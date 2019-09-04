@@ -5,8 +5,8 @@ import java.util.HashMap;
 import org.springframework.stereotype.Repository;
 
 import com.bashboard.commandline.model.Argument;
-import com.bashboard.commandline.model.RegularExpressionArgument;
-import com.bashboard.commandline.model.TagArgument;
+import com.bashboard.commandline.model.displaying.RegularExpressionArgument;
+import com.bashboard.commandline.model.displaying.TagArgument;
 
 import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 

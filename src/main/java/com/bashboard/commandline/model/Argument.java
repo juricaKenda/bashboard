@@ -8,10 +8,8 @@ import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.Wither;
 
-@ToString
-public abstract class Argument {
-	@Setter
-	String argument;
-	abstract String getSignature();
+public interface Argument {
 	
+	String getSignature();
+	void setArgument(String argument);
 }
