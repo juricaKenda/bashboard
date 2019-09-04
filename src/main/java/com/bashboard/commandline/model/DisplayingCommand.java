@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bashboard.commandline.model.Command;
+import com.bashboard.commandline.model.displaying.DisplayingArgument;
 import com.bashboard.model.PageContainer;
 import com.bashboard.persistence.PageContainerRepository;
 

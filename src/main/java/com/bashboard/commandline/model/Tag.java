@@ -18,7 +18,16 @@ public enum Tag {
 				return tag;
 			}
 		}
-//		TODO throw exception
-		return null;
+		throw new UnsupportedTagException("Tag " + input +" is not supported!");
+	}
+	
+	
+	static class UnsupportedTagException extends RuntimeException{
+		private String message;
+		public UnsupportedTagException(String message) {
+			super(message);
+			this.message = message;
+		}
+		
 	}
 }

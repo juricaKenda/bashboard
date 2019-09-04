@@ -10,6 +10,6 @@ public class Decomposer {
 
 	
 	public List<String> decompose(String input){
-		return Arrays.asList(input.split(" "));
+		return Arrays.asList(input.trim().split(" "));
 	}
 }

@@ -10,7 +10,10 @@ import java.util.List;
 public class InputValidator {
 
 	public boolean validateEvenCount(List<String> parts) {
-		return parts.size() % 2 == 0;
+		if(parts.size() % 2 == 0 && parts.size() > 0) {
+			return true;
+		}
+		throw new InvalidNumberOfInputValuesException("Invalid number of input values!",String.join(" ",parts));
 	}
 	
 	public boolean validateTags(List<String> parts) {
@@ -18,12 +21,30 @@ public class InputValidator {
 			if(index % 2 == 0) {
 				String tagElement = parts.get(index);
 				if(!tagElement.startsWith("-")) {
-//					TODO throw exception
-					return false;
+					throw new TagsNotPresentException("Neccessary tags not present in the given input!",String.join(" ",parts));
 				}
 			}
 		}
 		return true;
+	}
+	
+	
+	class TagsNotPresentException extends RuntimeException{
+		private String message;
+		private String input; 
+		public TagsNotPresentException(String messsage,String invalidInput) {
+			super(messsage);
+			this.input = invalidInput;
+		}
+	}
+	
+	class InvalidNumberOfInputValuesException extends RuntimeException{
+		private String message;
+		private String input; 
+		public InvalidNumberOfInputValuesException(String messsage,String invalidInput) {
+			super(messsage);
+			this.input = invalidInput;
+		}
 	}
 	
 }

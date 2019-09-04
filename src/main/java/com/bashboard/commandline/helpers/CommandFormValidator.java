@@ -12,12 +12,33 @@ public class CommandFormValidator {
 
 	
 	public boolean validateSingleCommand(List<CommandForm> forms) {
-		return forms.stream()
+		if(forms.stream()
 				.filter(form -> form.getTag().equals(Tag.COMMAND))
-				.count() == 1;
+				.count() == 1) {
+			return true;
+		}
+		throw new InvalidNumberOfCommandsException("Invalid number of command tags!");
 	}
 	
 	public boolean validateRootCommand(List<CommandForm> forms) {
-		return forms.get(0).getTag().equals(Tag.COMMAND);
+		if(forms.get(0).getTag().equals(Tag.COMMAND)) {
+			return true;
+		}
+		throw new InvalidRootCommandException("Root of the expression should be a command!");
+	}
+	
+	
+	class InvalidNumberOfCommandsException extends RuntimeException{
+		private String message;
+		public InvalidNumberOfCommandsException(String messsage) {
+			super(messsage);
+		}
+	}
+	
+	class InvalidRootCommandException extends RuntimeException{
+		private String message;
+		public InvalidRootCommandException(String messsage) {
+			super(messsage);
+		}
 	}
 }

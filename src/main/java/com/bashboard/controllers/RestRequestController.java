@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bashboard.commandline.model.Command;
 import com.bashboard.commandline.model.dto.CommandPack;
 import com.bashboard.commandline.utils.Parser;
+import com.bashboard.model.ErrorContainer;
 import com.bashboard.model.InputContainer;
 import com.bashboard.model.PageContainer;
 import com.bashboard.persistence.PageContainerRepository;
@@ -49,9 +50,16 @@ public class RestRequestController {
 	public String displayFavicon(Model model,InputContainer input) {
 		//TODO remove later and import from input
 		pageContainerInsertingService.insertAllDefault();
-		Command command = parser.parse(input.getText());
-		Object result = command.execute(repository.getAllContainers());
-		model.addAllAttributes(pageContainerDelegatingService.getClusters((List<PageContainer>) result));
+		try {
+			Command command = parser.parse(input.getText());
+			Object result = command.execute(repository.getAllContainers());
+			model.addAllAttributes(pageContainerDelegatingService.getClusters((List<PageContainer>) result));
+		}catch(RuntimeException e){
+			HashMap<String, List<PageContainer>> defaultClusters = pageContainerDelegatingService.getDefaultClusters();
+			model.addAllAttributes(defaultClusters);
+			model.addAttribute("error", new ErrorContainer(e.getMessage()));
+		}
+		
 		model.addAttribute("inputContainer", new InputContainer());
 		return "defaultCluster";
 	}

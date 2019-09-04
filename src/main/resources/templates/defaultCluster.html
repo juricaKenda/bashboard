@@ -78,6 +78,16 @@
         display: inline-table;
         text-align: left;
     }
+ 	.footer{
+ 		text-align: center;
+ 		color: #cc0000;
+ 		font-family: Courier;
+        text-decoration: none;
+        font-size: 150%;
+ 		position:absolute;
+   		bottom:0;
+   		width:100%;
+ 	}
     
    
 </style>
@@ -133,5 +143,7 @@
         </table>
     </div>
 </body>
-
+<footer class="footer" align="center">
+	<span th:if="${error != null && error.summary != null}" th:text="${error.summary}">Static summary</span>
+</footer>
 </html>
