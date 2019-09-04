@@ -6,6 +6,10 @@
 The goal of this project was to create a **fun enviroment for organizing bookmarks** on my laptop.  
 Additionally, when deployed to a remote server, it will give me the **leisure of having all bookmarks available on any device which has internet access.**
 
+## Command Form
+Below is an example of what a bashboard command might look like.  
+
+![](/visuals/Bashboard%20-%20command%20example.png)
 
 
 
