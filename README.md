@@ -19,7 +19,7 @@ Each command declared with a prefix (-c) has a list of applicable modificators a
 
 
 ## Currently Implemented Modificators (Argument Prefixes)
-**rgx** - Regular Expression (regex) modificator - Implies that its argument will have to be contained inside website path
+**rgx** - Regular Expression (regex) modificator - Implies that its argument will have to be contained inside website path  
 **tag** - Tag modificator - Implies that its argument will be the tag searched for in page semantics (Learning,Blog,Chill,Business..)
 
 
