@@ -2,8 +2,8 @@ package com.bashboard.commandline.model.dto;
 
 import java.util.List;
 
-import com.bashboard.commandline.model.Argument;
-import com.bashboard.commandline.model.Command;
+import com.bashboard.commandline.model.arguments.Argument;
+import com.bashboard.commandline.model.commands.Command;
 
 import lombok.Builder;
 import lombok.ToString;
