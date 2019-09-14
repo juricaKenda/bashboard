@@ -4,13 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.cloudfoundry.Tags;
 import org.springframework.stereotype.Service;
 
 import com.bashboard.model.PageContainer;
 import com.bashboard.model.Tag;
 import com.bashboard.persistence.ContainerRepository;
-import com.bashboard.persistence.PageContainerRepository;
 
 import lombok.NonNull;
 
@@ -67,6 +65,7 @@ public class PageContainerInsertingService {
 		PageContainer MITtechnologyReviewContainer = new PageContainer("https://www.technologyreview.com/favicon.ico","https://www.technologyreview.com","MIT Technology Review",Arrays.asList(Tag.LEARNING,Tag.PROGRAMMING));
 		PageContainer businessInsiderContainer = new PageContainer("https://www.businessinsider.com/favicon.ico","https://www.businessinsider.com","Business Insider",Arrays.asList(Tag.CHILL,Tag.BLOGS,Tag.LEARNING));
 		PageContainer refactoringGuruContainer = new PageContainer("https://refactoring.guru/favicon.ico","https://refactoring.guru","Refactoring Guru",Arrays.asList(Tag.CHILL,Tag.LEARNING,Tag.PROGRAMMING));
+		PageContainer googleContainer = new PageContainer("https://www.google.com/favicon.ico","https://www.google.com","Google",Arrays.asList(Tag.values()));
 		
 		//TODO add a method for validating and updating the length of an alias
 		//TODO replace with real database and add REST end point for inputing new pages
@@ -75,7 +74,7 @@ public class PageContainerInsertingService {
 				mediumContainer,youtubeContainer,asosContainer,
 				facebookContainer,ebayContainer,amazonContainer,
 				zaraContainer,bookDepositoryContainer,MITtechnologyReviewContainer,
-				businessInsiderContainer,refactoringGuruContainer);
+				businessInsiderContainer,refactoringGuruContainer,googleContainer);
 	}
 	
 	
