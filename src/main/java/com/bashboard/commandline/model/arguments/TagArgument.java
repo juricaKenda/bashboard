@@ -1,12 +1,10 @@
-package com.bashboard.commandline.model.displaying;
+package com.bashboard.commandline.model.arguments;
 
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import com.bashboard.commandline.model.Argument;
 import com.bashboard.model.PageContainer;
 
-public class TagArgument extends DisplayingArgument{
+public class TagArgument extends Argument{
 
 	@Override
 	public String getSignature() {
