@@ -1,6 +1,9 @@
-package com.bashboard.commandline.model;
+package com.bashboard.commandline.model.commands;
 
 import java.util.List;
+
+import com.bashboard.commandline.model.arguments.Argument;
+
 
 public abstract class Command{
 	List<Argument> arguments;
