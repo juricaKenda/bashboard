@@ -9,7 +9,7 @@ import com.bashboard.commandline.helpers.CommandFormValidator;
 import com.bashboard.commandline.helpers.CommandPackMapper;
 import com.bashboard.commandline.helpers.Decomposer;
 import com.bashboard.commandline.helpers.InputValidator;
-import com.bashboard.commandline.model.Command;
+import com.bashboard.commandline.model.commands.Command;
 import com.bashboard.commandline.model.dto.CommandForm;
 import com.bashboard.commandline.model.dto.CommandPack;
 
