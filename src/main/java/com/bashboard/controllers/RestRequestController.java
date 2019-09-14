@@ -54,7 +54,8 @@ public class RestRequestController {
 //			TODO delegator for different command types
 			Object result = command.execute(repository.getAllContainers());
 			if(command instanceof OpenCommand) {
-				return "redirect:open?href="+(String)result;
+				String href = (String)result;
+				return "redirect:open?href="+href;
 			}
 			model.addAllAttributes(pageContainerDelegatingService.getClusters((List<PageContainer>) result));
 		}catch(RuntimeException e){
