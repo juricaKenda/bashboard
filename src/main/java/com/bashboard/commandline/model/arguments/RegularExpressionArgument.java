@@ -1,8 +1,7 @@
-package com.bashboard.commandline.model.displaying;
+package com.bashboard.commandline.model.arguments;
 
 import java.util.function.Predicate;
 
-import com.bashboard.commandline.model.Argument;
 import com.bashboard.model.PageContainer;
 
 import lombok.ToString;
@@ -10,7 +9,7 @@ import lombok.Value;
 
 @Value
 @ToString
-public class RegularExpressionArgument extends DisplayingArgument{
+public class RegularExpressionArgument extends Argument{
 
 	@Override
 	public String getSignature() {
@@ -21,4 +20,5 @@ public class RegularExpressionArgument extends DisplayingArgument{
 	public Predicate<PageContainer> getPredicate(){
 		return p -> p.getLink().contains(argument);
 	}
+
 }
