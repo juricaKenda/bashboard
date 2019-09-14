@@ -3,17 +3,8 @@ package com.bashboard.controllers;
 import java.util.HashMap;
 import java.util.List;
 
-import org.hibernate.validator.internal.util.privilegedactions.NewInstance;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.bashboard.commandline.model.Command;
-import com.bashboard.commandline.model.dto.CommandPack;
+import com.bashboard.commandline.model.commands.Command;
+import com.bashboard.commandline.model.commands.OpenCommand;
 import com.bashboard.commandline.utils.Parser;
 import com.bashboard.model.ErrorContainer;
 import com.bashboard.model.InputContainer;
@@ -21,7 +12,15 @@ import com.bashboard.model.PageContainer;
 import com.bashboard.persistence.PageContainerRepository;
 import com.bashboard.services.PageContainerDelegatingService;
 import com.bashboard.services.PageContainerInsertingService;
-import com.bashboard.services.PageContainerLoadingService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 public class RestRequestController {
@@ -52,7 +51,11 @@ public class RestRequestController {
 		pageContainerInsertingService.insertAllDefault();
 		try {
 			Command command = parser.parse(input.getText());
+//			TODO delegator for different command types
 			Object result = command.execute(repository.getAllContainers());
+			if(command instanceof OpenCommand) {
+				return "redirect:open?href="+(String)result;
+			}
 			model.addAllAttributes(pageContainerDelegatingService.getClusters((List<PageContainer>) result));
 		}catch(RuntimeException e){
 			HashMap<String, List<PageContainer>> defaultClusters = pageContainerDelegatingService.getDefaultClusters();
@@ -62,5 +65,10 @@ public class RestRequestController {
 		
 		model.addAttribute("inputContainer", new InputContainer());
 		return "defaultCluster";
+	}
+	
+	@GetMapping("/open")
+	public ModelAndView redirect(@RequestParam String href) {
+		return new ModelAndView("redirect:"+href);
 	}
 }
