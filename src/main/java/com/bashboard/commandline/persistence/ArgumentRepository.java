@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 import org.springframework.stereotype.Repository;
 
-import com.bashboard.commandline.model.Argument;
-import com.bashboard.commandline.model.displaying.RegularExpressionArgument;
-import com.bashboard.commandline.model.displaying.TagArgument;
+import com.bashboard.commandline.model.arguments.Argument;
+import com.bashboard.commandline.model.arguments.RegularExpressionArgument;
+import com.bashboard.commandline.model.arguments.TagArgument;
 
 import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 
