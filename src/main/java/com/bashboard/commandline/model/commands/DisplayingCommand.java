@@ -1,4 +1,4 @@
-package com.bashboard.commandline.model;
+package com.bashboard.commandline.model.commands;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bashboard.commandline.model.displaying.DisplayingArgument;
+import com.bashboard.commandline.model.arguments.Argument;
 import com.bashboard.model.PageContainer;
 import com.bashboard.persistence.PageContainerRepository;
 
@@ -42,7 +42,7 @@ public class DisplayingCommand extends Command{
 
 	private List<Predicate<PageContainer>> makeRelevantPredicateChain(List<Argument> arguments) {
 		return arguments.stream()
-				.map(argument -> (DisplayingArgument)argument)
+				.map(argument -> (Argument)argument)
 				.map(argument->argument.getPredicate())
 				.collect(Collectors.toList());
 	}
