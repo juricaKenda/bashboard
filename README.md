@@ -4,11 +4,23 @@
 ## About
 **Interactive bookmark manager** made for developers! Bashboard enables you to **use _bash_-like commands to navigate through your website bookmarks.**  
 The goal of this project was to create a **fun enviroment for organizing bookmarks** on my laptop.  
-Additionally, when deployed to a remote server, it will give me the **leisure of having all bookmarks available on any device which has internet access.**
+Additionally, when deployed to a remote server, it will give user the **leisure of having all bookmarks available on any device which has internet access.**
+
+## Command Form
+Below is an example of what a bashboard command might look like.  
+
+![](/visuals/Bashboard%20-%20command%20example.png)
+
+This **command form has to be respected in order for the command to be parsed properly**. There is also one more property of the command form that can be used for creating commands. That is - you can **append infinitely many (ap & a) tags and values on the root argument**.
+Each command declared with a prefix (-c) has a list of applicable modificators and their arguments.
+
+## Currently Implemented Commands
+**ls** - Display all command
 
 
-
-
+## Currently Implemented Modificators (Argument Prefixes)
+**rgx** - Regular Expression (regex) modificator - Implies that its argument will have to be contained inside website path  
+**tag** - Tag modificator - Implies that its argument will be the tag searched for in page semantics (Learning,Blog,Chill,Business..)
 
 
 ## Interactive Design
