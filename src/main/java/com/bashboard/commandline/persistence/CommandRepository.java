@@ -5,8 +5,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.bashboard.commandline.model.Command;
-import com.bashboard.commandline.model.DisplayingCommand;
+import com.bashboard.commandline.model.commands.Command;
+import com.bashboard.commandline.model.commands.DisplayingCommand;
+import com.bashboard.commandline.model.commands.OpenCommand;
 
 @Repository
 public class CommandRepository {
@@ -16,6 +17,7 @@ public class CommandRepository {
 	private HashMap<String, Command> initializeRepository() {
 		HashMap<String, Command> map = new HashMap<>();
 		map.put("ls",new DisplayingCommand());
+		map.put("opn", new OpenCommand());
 		return map;
 	}
 	
