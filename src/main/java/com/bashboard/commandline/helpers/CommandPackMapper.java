@@ -8,9 +8,9 @@ import javax.activation.CommandMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bashboard.commandline.model.Argument;
-import com.bashboard.commandline.model.Command;
 import com.bashboard.commandline.model.Tag;
+import com.bashboard.commandline.model.arguments.Argument;
+import com.bashboard.commandline.model.commands.Command;
 import com.bashboard.commandline.model.dto.CommandForm;
 import com.bashboard.commandline.model.dto.CommandPack;
 import com.bashboard.commandline.persistence.ArgumentRepository;
