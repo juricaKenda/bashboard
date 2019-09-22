@@ -15,8 +15,6 @@ import com.bashboard.persistence.PageContainerRepository;
 import lombok.ToString;
 import lombok.experimental.Wither;
 
-
-@ToString
 public class DisplayingCommand extends Command{
 
 	private final List<String> acceptableArgSignatures = Arrays.asList("rgx","tag");

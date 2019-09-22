@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.bashboard.commandline.model.arguments.Argument;
 import com.bashboard.model.PageContainer;
 
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Value;
 
 public class OpenCommand extends Command {
 
