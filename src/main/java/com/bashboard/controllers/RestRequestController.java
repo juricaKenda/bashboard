@@ -57,11 +57,17 @@ public class RestRequestController {
 	public String displayFavicon(Model model,InputContainer input) {
 		//TODO remove later and import from input
 		pageContainerInsertingService.insertAllDefault();
-		Command command = parser.parse(input.getText());
-		tempRequestStorage.put(command.toString(), command);
-		UseCase useCase = commandDelegatingService.getUseCaseFor(command);
-		
-		return useCase.getRedirect();
+		try {
+			Command command = parser.parse(input.getText());
+			tempRequestStorage.put(String.valueOf(command.hashCode()), command);
+			UseCase useCase = commandDelegatingService.getUseCaseFor(command);
+			return useCase.getRedirect();
+		}catch(RuntimeException e) {
+			model.addAttribute("error", new ErrorContainer(e.getMessage()));
+			HashMap<String, List<PageContainer>> defaultClusters = pageContainerDelegatingService.getDefaultClusters();
+			model.addAllAttributes(defaultClusters);
+			return "defaultCluster";
+		}
 	}
 	
 	@GetMapping("/openPage")
