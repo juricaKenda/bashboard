@@ -10,7 +10,7 @@ public class DisplayPagesUseCase extends UseCase{
 	
 	@Override
 	public String getRedirect() {
-		return "redirect:displayPages?commandHash="+displayCommand;
+		return "redirect:displayPages?commandHash="+displayCommand.hashCode();
 	}
 
 }

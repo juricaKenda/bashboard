@@ -12,7 +12,7 @@ public class OpenPageUseCase extends UseCase{
 	
 	@Override
 	public String getRedirect() {
-		return "redirect:openPage?commandHash="+openCommand;
+		return "redirect:openPage?commandHash="+openCommand.hashCode();
 	}
 
 	
