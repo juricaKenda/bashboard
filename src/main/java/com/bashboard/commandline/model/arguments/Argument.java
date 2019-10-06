@@ -2,7 +2,7 @@ package com.bashboard.commandline.model.arguments;
 
 import java.util.function.Predicate;
 
-import com.bashboard.model.PageContainer;
+import com.bashboard.api.model.PageContainer;
 
 import lombok.Setter;
 

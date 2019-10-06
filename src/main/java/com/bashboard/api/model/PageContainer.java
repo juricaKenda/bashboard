@@ -1,9 +1,9 @@
-package com.bashboard.model;
+package com.bashboard.api.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bashboard.model.PageContainer.PageContainerBuilder;
+import com.bashboard.api.model.PageContainer.PageContainerBuilder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,4 +24,10 @@ public class PageContainer{
 	@NonNull
 	private final List<Tag> tags;
 	
+	
+	public enum Tag{
+
+		BUSINESS,SHOPPING,LEARNING,BLOGS,PROGRAMMING,CHILL;
+	
+	}
 }

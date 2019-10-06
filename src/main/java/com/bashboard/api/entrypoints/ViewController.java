@@ -1,4 +1,4 @@
-package com.bashboard.controllers;
+package com.bashboard.api.entrypoints;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

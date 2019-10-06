@@ -1,4 +1,4 @@
-package com.bashboard.persistence;
+package com.bashboard.api.persistence;
 
 import org.springframework.stereotype.Component;
 

@@ -2,7 +2,7 @@ package com.bashboard.commandline.helpers;
 
 import org.springframework.stereotype.Component;
 
-import com.bashboard.commandline.model.Tag;
+import com.bashboard.commandline.model.CommandTag;
 
 import java.util.List;
 

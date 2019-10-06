@@ -8,7 +8,7 @@ import javax.activation.CommandMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bashboard.commandline.model.Tag;
+import com.bashboard.commandline.model.CommandTag;
 import com.bashboard.commandline.model.arguments.Argument;
 import com.bashboard.commandline.model.commands.Command;
 import com.bashboard.commandline.model.dto.CommandForm;
@@ -44,7 +44,7 @@ public class CommandPackMapper {
 		for(int index=0; index < commandForms.size()-1; index+=2) {
 			CommandForm argumentPrefixContainer = commandForms.get(index);
 			CommandForm argumentContainer = commandForms.get(index+1);
-			if(argumentPrefixContainer.getTag().equals(Tag.ARGPREFIX) && argumentContainer.getTag().equals(Tag.ARGUMENT)) {
+			if(argumentPrefixContainer.getTag().equals(CommandTag.ARGPREFIX) && argumentContainer.getTag().equals(CommandTag.ARGUMENT)) {
 				if(command.accepts(argumentPrefixContainer.getValue())) {
 					Argument argument = argumentRepository.getArgumentByAlias(argumentPrefixContainer.getValue());
 					argument.setArgument(argumentContainer.getValue());

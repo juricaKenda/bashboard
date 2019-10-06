@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.bashboard.api.model.PageContainer;
+import com.bashboard.api.persistence.PageContainerRepository;
 import com.bashboard.commandline.model.CommandResponse;
 import com.bashboard.commandline.model.arguments.Argument;
-import com.bashboard.model.PageContainer;
-import com.bashboard.persistence.PageContainerRepository;
 
 import lombok.ToString;
 import lombok.experimental.Wither;

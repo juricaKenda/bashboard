@@ -1,4 +1,4 @@
-package com.bashboard.controllers.usecases;
+package com.bashboard.api.usecases;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bashboard.api.model.PageContainer;
+import com.bashboard.api.persistence.CommandCache;
+import com.bashboard.api.persistence.PageContainerRepository;
 import com.bashboard.commandline.model.commands.Command;
 import com.bashboard.commandline.model.commands.OpenCommand;
-import com.bashboard.model.PageContainer;
-import com.bashboard.persistence.CommandCache;
-import com.bashboard.persistence.PageContainerRepository;
 
 @Component
 public class GetLatestCommandResult {

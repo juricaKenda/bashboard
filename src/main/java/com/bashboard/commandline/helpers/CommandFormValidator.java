@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.bashboard.commandline.model.Tag;
+import com.bashboard.commandline.model.CommandTag;
 import com.bashboard.commandline.model.dto.CommandForm;
 
 @Component
@@ -13,7 +13,7 @@ public class CommandFormValidator {
 	
 	public boolean validateSingleCommand(List<CommandForm> forms) {
 		if(forms.stream()
-				.filter(form -> form.getTag().equals(Tag.COMMAND))
+				.filter(form -> form.getTag().equals(CommandTag.COMMAND))
 				.count() == 1) {
 			return true;
 		}
@@ -21,7 +21,7 @@ public class CommandFormValidator {
 	}
 	
 	public boolean validateRootCommand(List<CommandForm> forms) {
-		if(forms.get(0).getTag().equals(Tag.COMMAND)) {
+		if(forms.get(0).getTag().equals(CommandTag.COMMAND)) {
 			return true;
 		}
 		throw new InvalidRootCommandException("Root of the expression should be a command!");

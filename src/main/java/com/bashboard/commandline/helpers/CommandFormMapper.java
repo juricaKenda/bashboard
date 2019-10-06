@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.bashboard.commandline.model.Tag;
+import com.bashboard.commandline.model.CommandTag;
 import com.bashboard.commandline.model.dto.CommandForm;
 
 @Component
@@ -15,7 +15,7 @@ public class CommandFormMapper {
 		List<CommandForm> forms = new ArrayList<>();
 		for(int index=0; index < parts.size(); index+=2) {
 			CommandForm commandForm = CommandForm.builder()
-					.tag(Tag.of(parts.get(index).trim()))
+					.tag(CommandTag.of(parts.get(index).trim()))
 					.value(parts.get(index+1).trim())
 					.build();
 			forms.add(commandForm);

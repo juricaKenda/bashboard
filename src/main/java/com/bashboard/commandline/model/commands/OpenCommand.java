@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bashboard.api.model.PageContainer;
 import com.bashboard.commandline.model.CommandResponse;
 import com.bashboard.commandline.model.arguments.Argument;
-import com.bashboard.model.PageContainer;
 
 import lombok.Getter;
 import lombok.NonNull;

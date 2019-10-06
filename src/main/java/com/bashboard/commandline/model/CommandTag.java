@@ -1,19 +1,19 @@
 package com.bashboard.commandline.model;
 
 
-public enum Tag {
+public enum CommandTag {
 
 	COMMAND("-c"),ARGPREFIX("-ap"),ARGUMENT("-a");
 	
 	private String value;
 	
-	private Tag(String value) {
+	private CommandTag(String value) {
 		this.value  = value;
 	}
 	
 	
-	public static Tag of(String input) {
-		for(Tag tag : Tag.values()) {
+	public static CommandTag of(String input) {
+		for(CommandTag tag : CommandTag.values()) {
 			if(tag.value.equals(input)) {
 				return tag;
 			}

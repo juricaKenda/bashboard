@@ -1,6 +1,6 @@
 package com.bashboard.commandline.model.dto;
 
-import com.bashboard.commandline.model.Tag;
+import com.bashboard.commandline.model.CommandTag;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import lombok.Value;
 @ToString
 public class CommandForm {
 
-	private final Tag tag;
+	private final CommandTag tag;
 	private final String value;
 	
 	

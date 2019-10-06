@@ -1,23 +1,22 @@
-package com.bashboard.services;
+package com.bashboard.api.services;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bashboard.model.PageContainer;
-import com.bashboard.model.Tag;
-import com.bashboard.persistence.ContainerRepository;
+import com.bashboard.api.model.PageContainer;
+import com.bashboard.api.model.PageContainer.Tag;
+import com.bashboard.api.persistence.PageContainerRepository;
 
 import lombok.NonNull;
 
 @Service
 public class PageContainerInsertingService {
 
-	private final ContainerRepository containerRepository;
+	private final PageContainerRepository containerRepository;
 	
-	public PageContainerInsertingService(ContainerRepository repo){
+	public PageContainerInsertingService(PageContainerRepository repo){
 		containerRepository = repo;
 		insertAllDefault();
 	}

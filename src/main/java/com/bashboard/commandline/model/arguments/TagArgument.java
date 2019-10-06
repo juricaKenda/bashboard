@@ -2,7 +2,8 @@ package com.bashboard.commandline.model.arguments;
 
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import com.bashboard.model.PageContainer;
+
+import com.bashboard.api.model.PageContainer;
 
 public class TagArgument extends Argument{
 

@@ -1,4 +1,4 @@
-package com.bashboard.controllers;
+package com.bashboard.api.entrypoints;
 
 import java.util.List;
 
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bashboard.api.model.PageContainer;
+import com.bashboard.api.usecases.CacheCommandUseCase;
+import com.bashboard.api.usecases.GetAllBookmarksUseCase;
+import com.bashboard.api.usecases.GetLatestCommandResult;
+import com.bashboard.api.usecases.ParseCommandUseCase;
 import com.bashboard.commandline.model.commands.Command;
-import com.bashboard.controllers.usecases.CacheCommandUseCase;
-import com.bashboard.controllers.usecases.GetAllBookmarksUseCase;
-import com.bashboard.controllers.usecases.GetLatestCommandResult;
-import com.bashboard.controllers.usecases.ParseCommandUseCase;
-import com.bashboard.model.PageContainer;
 
 
 @RestController
