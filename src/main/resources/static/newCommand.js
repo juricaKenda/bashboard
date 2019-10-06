@@ -55,6 +55,7 @@ $(document).ready(
                                     
                                 }
                             );
+                            $("#centerCluster tbody").empty();
                             $("#centerCluster tbody").append(html);
                         }else{
                             window.open(response.result[0], '_blank');
