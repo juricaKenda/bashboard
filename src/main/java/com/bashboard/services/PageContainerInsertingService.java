@@ -15,8 +15,12 @@ import lombok.NonNull;
 @Service
 public class PageContainerInsertingService {
 
-	@Autowired
-	private ContainerRepository containerRepository;
+	private final ContainerRepository containerRepository;
+	
+	public PageContainerInsertingService(ContainerRepository repo){
+		containerRepository = repo;
+		insertAllDefault();
+	}
 	
 	public void insertPageContainer(String link,String alias,List<Tag> tags) {
 		PageContainer container = PageContainer.builder()

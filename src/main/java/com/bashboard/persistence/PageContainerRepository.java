@@ -3,8 +3,10 @@ package com.bashboard.persistence;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.bashboard.model.PageContainer;
+import com.bashboard.services.PageContainerInsertingService;
 
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

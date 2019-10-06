@@ -3,6 +3,15 @@
 
 <head>
     <title>Bashboard</title>
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="/newCommand.js"></script>
 </head>
 <style>
     h1 {
@@ -96,54 +105,18 @@
 	
 	<h1>Bashboard</h1>
 
-	<form action="#" th:action="@{/board}" th:object="${inputContainer}" method="post" align="center">
-    	<input type="text" th:field="*{text}">
+	<form id="commandForm" align="center">
+    	<input type="text" id="unparsedCommand">
 	</form>
 	<br>
 
-
-
     <div class="center-content-wrapper">
-        <table class="leftCluster" align="left">
-            <tbody>
-                <tr th:each="container : ${leftClusterContainers}">
-                    <td><img th:src="${container.icon}"></img>
-                    </td>
-                    <td></td>
-                    <td class="pageNameAlias">
-                        <a th:href="@{${container.link}}" th:text="${container.alias}" target="_blank"></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="centerCluster" align="center">
-            <tbody>
-                <tr th:each="container : ${centerClusterContainers}">
-                    <td><img th:src="${container.icon}"></img>
-                    </td>
-                    <td></td>
-                    <td class="pageNameAlias">
-                        <a th:href="@{${container.link}}" th:text="${container.alias}" target="_blank"></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <table class="rightCluster" align="right">
-            <tbody>
-                <tr th:each="container : ${rightClusterContainers}">
-                    <td><img th:src="${container.icon}"></img>
-                    </td>
-                    <td></td>
-                    <td class="pageNameAlias">
-                        <a th:href="@{${container.link}}" th:text="${container.alias}" target="_blank"></a>
-                    </td>
-                </tr>
-            </tbody>
+        <table id="centerCluster" class="centerCluster" align="center">
+        <tbody></tbody>
         </table>
     </div>
 </body>
 <footer class="footer" align="center">
-	<span th:if="${error != null && error.summary != null}" th:text="${error.summary}">Static summary</span>
+	<div id="errorDisplay"></div>
 </footer>
 </html>

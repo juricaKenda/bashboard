@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bashboard.commandline.model.CommandResponse;
 import com.bashboard.commandline.model.arguments.Argument;
 import com.bashboard.model.PageContainer;
 
@@ -16,7 +17,9 @@ import lombok.Value;
 
 public class OpenCommand extends Command {
 
-	
+	{
+		signature = "opn";
+	}
 	private final List<String> acceptableArgSignatures = Arrays.asList("rgx");
 	
 	@Override
@@ -26,17 +29,19 @@ public class OpenCommand extends Command {
 
 	@Override
 	String getSignature() {
-		return "opn";
+		return signature;
 	}
 
 	@Override
-	public String execute(Object input) {
+	public CommandResponse execute(Object input) {
 		List<PageContainer> containers = (List<PageContainer>)input;
-		return containers.stream()
+		@NonNull
+		String link = containers.stream()
 		.filter(makeRelevantPredicateChain(arguments).stream().reduce(each->true,Predicate::and))
 		.map(pageContainer->pageContainer.getLink())
 		.findFirst()
 		.orElse("default");
+		return new CommandResponse(Arrays.asList(link),this);
 	}
 	
 	private List<Predicate<PageContainer>> makeRelevantPredicateChain(List<Argument> arguments) {

@@ -1,4 +1,4 @@
-package com.bashboard.commandline.utils;
+package com.bashboard.commandline;
 
 import java.util.List;
 

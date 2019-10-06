@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.bashboard.commandline.model.CommandResponse;
 import com.bashboard.commandline.model.arguments.Argument;
 import com.bashboard.model.PageContainer;
 import com.bashboard.persistence.PageContainerRepository;
@@ -17,6 +18,9 @@ import lombok.experimental.Wither;
 
 public class DisplayingCommand extends Command{
 
+	{
+		signature = "ls";
+	}
 	private final List<String> acceptableArgSignatures = Arrays.asList("rgx","tag");
 	
 	@Override
@@ -26,16 +30,17 @@ public class DisplayingCommand extends Command{
 
 	@Override
 	String getSignature() {
-		return "ls";
+		return signature;
 	}
 
 	@Override
-	public List<PageContainer> execute(Object input){
+	public CommandResponse execute(Object input){
 		List<PageContainer> containers = (List<PageContainer>)input;
-		return containers 
+		List<PageContainer> list = containers 
 				.stream()
 				.filter(makeRelevantPredicateChain(arguments).stream().reduce(each->true,Predicate::and))
 				.collect(Collectors.toList());
+		return new CommandResponse(list,this);
 	}
 
 	private List<Predicate<PageContainer>> makeRelevantPredicateChain(List<Argument> arguments) {

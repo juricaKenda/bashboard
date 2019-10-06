@@ -1,91 +1,64 @@
 package com.bashboard.controllers;
 
-import java.util.HashMap;
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.bashboard.commandline.model.commands.Command;
-import com.bashboard.commandline.model.commands.DisplayingCommand;
-import com.bashboard.commandline.model.commands.OpenCommand;
-import com.bashboard.commandline.utils.Parser;
-import com.bashboard.model.ErrorContainer;
-import com.bashboard.model.InputContainer;
+import com.bashboard.controllers.usecases.CacheCommandUseCase;
+import com.bashboard.controllers.usecases.GetAllBookmarksUseCase;
+import com.bashboard.controllers.usecases.GetLatestCommandResult;
+import com.bashboard.controllers.usecases.ParseCommandUseCase;
 import com.bashboard.model.PageContainer;
-import com.bashboard.model.usecases.UseCase;
-import com.bashboard.persistence.PageContainerRepository;
-import com.bashboard.services.CommandDelegatingService;
-import com.bashboard.services.PageContainerDelegatingService;
-import com.bashboard.services.PageContainerInsertingService;
 
 
-@Controller
+@RestController
 public class RestRequestController {
 
 	@Autowired
-	private PageContainerDelegatingService pageContainerDelegatingService;
+	private GetAllBookmarksUseCase getAllBookmarksUseCase;
 	@Autowired
-	private PageContainerInsertingService pageContainerInsertingService;
+	private GetLatestCommandResult getLatestCommandResult;
 	@Autowired
-	private Parser parser;
+	private ParseCommandUseCase parseCommandUseCase;
 	@Autowired
-	private PageContainerRepository repository;
-	@Autowired
-	private CommandDelegatingService commandDelegatingService;
+	private CacheCommandUseCase cacheCommandUseCase;
 
-	private HashMap<String,Command> tempRequestStorage = new HashMap<>();
 	
-	
-	@GetMapping("/board")
-	public String welcomePage(Model model) {
-		//TODO remove later and import from input
-		pageContainerInsertingService.insertAllDefault();
-		HashMap<String, List<PageContainer>> defaultClusters = pageContainerDelegatingService.getDefaultClusters();
-		
-		model.addAllAttributes(defaultClusters);
-		model.addAttribute("inputContainer", new InputContainer());
-		return "defaultCluster";
+	@GetMapping("/allBookmarks")
+	public ResponseEntity<List<PageContainer>> getAllBookmarks(Model model) {
+		List<PageContainer> allBookmarks = getAllBookmarksUseCase.getAllBookmarks();
+		return new ResponseEntity<List<PageContainer>>(allBookmarks,HttpStatus.OK);
 	}
 	
-	@PostMapping("/board")
-	public String displayFavicon(Model model,InputContainer input) {
-		//TODO remove later and import from input
-		pageContainerInsertingService.insertAllDefault();
-		try {
-			Command command = parser.parse(input.getText());
-			tempRequestStorage.put(String.valueOf(command.hashCode()), command);
-			UseCase useCase = commandDelegatingService.getUseCaseFor(command);
-			return useCase.getRedirect();
+	@GetMapping("/latestCommandResult")
+	public ResponseEntity<Object> getLatestCommandResult() {
+		Object commandResult = getLatestCommandResult.getLatestCommandResult();
+		return new ResponseEntity<Object>(commandResult,HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/newCommand",produces= MediaType.APPLICATION_JSON_VALUE, consumes= MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> newCommand(@RequestBody String commandJson) {
+		JSONObject object = new JSONObject(commandJson);
+		String commandUnparsed = (String)object.get("command");
+		try{
+			Command command = parseCommandUseCase.parseCommand(commandUnparsed);
+			cacheCommandUseCase.cacheCommand(command);
+			return new ResponseEntity<>(command,HttpStatus.OK);
 		}catch(RuntimeException e) {
-			model.addAttribute("error", new ErrorContainer(e.getMessage()));
-			HashMap<String, List<PageContainer>> defaultClusters = pageContainerDelegatingService.getDefaultClusters();
-			model.addAllAttributes(defaultClusters);
-			return "defaultCluster";
+			System.out.println(e);
+			return new ResponseEntity<>(e,HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
 	
-	@GetMapping("/openPage")
-	public ModelAndView openPage(@RequestParam String commandHash) {
-		OpenCommand command = (OpenCommand)tempRequestStorage.get(commandHash);
-		List<PageContainer> allContainers = repository.getAllContainers();
-		
-		return new ModelAndView("redirect:"+command.execute(allContainers));
-	}
 	
-	@GetMapping("/displayPages")
-	public String displayPages(@RequestParam String commandHash,Model model) {
-		DisplayingCommand command = (DisplayingCommand)tempRequestStorage.get(commandHash);
-		List<PageContainer> allContainers = repository.getAllContainers();
-		List<PageContainer> result = command.execute(allContainers);
-		
-		model.addAllAttributes(pageContainerDelegatingService.getClusters(result));
-		model.addAttribute("inputContainer", new InputContainer());
-		return "defaultCluster";
-	}
 }
