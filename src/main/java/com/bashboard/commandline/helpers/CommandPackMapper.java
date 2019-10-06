@@ -34,8 +34,12 @@ public class CommandPackMapper {
 				.build();
 	}
 
-	private Command mapToCommand(CommandForm command) {
-		return commandRepository.getCommandByAlias(command.getValue());
+	private Command mapToCommand(CommandForm commandForm) {
+		Command commandByAlias = commandRepository.getCommandByAlias(commandForm.getValue());
+		if(commandByAlias == null) {
+			throw new UnsupportedCommandException("Command '"+commandForm.getValue()+"' is not supported!");
+		}
+		return commandByAlias;
 	} 
 	
 	private List<Argument> mapToArguments(List<CommandForm> commandForms) {
@@ -59,5 +63,12 @@ public class CommandPackMapper {
 		return arguments;
 	}
 
+    class UnsupportedCommandException extends RuntimeException{
+    	private String message;
+    	public UnsupportedCommandException(String message) {
+    		super(message);
+    		this.message = message;
+    	}
+    }
 	
 }
