@@ -55,7 +55,6 @@ public class RestRequestController {
 			cacheCommandUseCase.cacheCommand(command);
 			return new ResponseEntity<>(command,HttpStatus.OK);
 		}catch(RuntimeException e) {
-			System.out.println(e);
 			return new ResponseEntity<>(e,HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
