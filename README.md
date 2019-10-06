@@ -6,6 +6,10 @@
 The goal of this project was to create a **fun enviroment for organizing bookmarks** on my laptop.  
 Additionally, when deployed to a remote server, it will give user the **leisure of having all bookmarks available on any device which has internet access.**
 
+## Test it out!
+Here is the link to the application: https://bashboard.herokuapp.com  
+*Please be aware that the application is running on servers provided by Heroku, meaning it can result in an approximately 15 second delay each time it is being deployed after being unused for a while.*
+
 ## Command Form
 Below is an example of what a bashboard command might look like.  
 
