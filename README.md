@@ -15,12 +15,18 @@ This **command form has to be respected in order for the command to be parsed pr
 Each command declared with a prefix (-c) has a list of applicable modificators and their arguments.
 
 ## Currently Implemented Commands
-**ls** - Display all command
+| Command | Description |
+| --- | --- |
+| **ls**  | Display all command - displays all bookmarks | 
+| **opn**  | Open command - opens a bookmark | 
 
 
 ## Currently Implemented Modificators (Argument Prefixes)
-**rgx** - Regular Expression (regex) modificator - Implies that its argument will have to be contained inside website path  
-**tag** - Tag modificator - Implies that its argument will be the tag searched for in page semantics (Learning,Blog,Chill,Business..)
+| Modificator | Description |
+| --- | --- |
+| **rgx** | Regular Expression (regex) modificator - Implies that its argument will have to be contained inside website path  |
+| **tag** | Tag modificator - Implies that its argument will be the tag searched for in page semantics (Learning,Blog,Chill,Business..)|
+
 
 
 ## Interactive Design
