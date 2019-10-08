@@ -42,6 +42,9 @@ $(document).ready(
                         var html ='';
                         if(response.command.signature === "opn"){
                             window.open(response.result[0], '_blank');
+                        }else if(response.command.signature === "darkmode"){
+                            window.open(response.result[0], '_blank');
+                            window.close();
                         }else {
                             $(response.result).each(
                                 function() {

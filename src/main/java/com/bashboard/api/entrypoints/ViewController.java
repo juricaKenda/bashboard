@@ -15,4 +15,9 @@ public class ViewController {
 	public String homeBoard() {
 		return "home";
 	}
+	
+	@GetMapping("/darkmode")
+	public String darkMode() {
+		return "darkmode";
+	}
 }
