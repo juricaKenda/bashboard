@@ -22,13 +22,11 @@ $(document).ready(
                 cache: false,
                 statusCode: {
                     200: function(result) {
-                        console.log("Succesfully parsed the command");
                         displayResult();                  
                     }
                 },
                 error : function(e) {
                     $("#errorDisplay").html("<strong>"+e.responseJSON.message+"</strong>");
-                    console.log("ERROR: ", e);
                 }
             });
 
@@ -41,9 +39,10 @@ $(document).ready(
                 cache: false,
                 statusCode: {
                     200: function(response) {
-                        console.log(response.result);
                         var html ='';
-                        if(response.result.length > 1){
+                        if(response.command.signature === "opn"){
+                            window.open(response.result[0], '_blank');
+                        }else {
                             $(response.result).each(
                                 function() {
                                     html+= 
@@ -56,8 +55,6 @@ $(document).ready(
                                 }
                             );
                             $("#centerCluster tbody").append(html);
-                        }else if(response.result.length == 1){
-                            window.open(response.result[0], '_blank');
                         }
                                            
                     }
