@@ -12,13 +12,15 @@ import com.bashboard.api.persistence.PageContainerRepository;
 import com.bashboard.commandline.model.commands.Command;
 import com.bashboard.commandline.model.commands.OpenCommand;
 
+import lombok.AllArgsConstructor;
+
 @Component
+@AllArgsConstructor
 public class GetLatestCommandResult {
 
-	@Autowired
-	private PageContainerRepository repository;
-	@Autowired
-	private CommandCache commandCache;
+	
+	private final PageContainerRepository repository;
+	private final CommandCache commandCache;
 	
 	public Object getLatestCommandResult() {
 		Command command = commandCache.getLatestCommand();

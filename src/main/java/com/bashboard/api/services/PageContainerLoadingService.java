@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import com.bashboard.api.model.PageContainer;
 import com.bashboard.api.persistence.PageContainerRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class PageContainerLoadingService {
 
-	@Autowired
-	private PageContainerRepository pageContainerRepository;
+	private final PageContainerRepository pageContainerRepository;
 
 	public List<PageContainer> loadPageContainers() {
 		return pageContainerRepository.getAllContainers();

@@ -20,18 +20,18 @@ import com.bashboard.api.usecases.GetLatestCommandResult;
 import com.bashboard.api.usecases.ParseCommandUseCase;
 import com.bashboard.commandline.model.commands.Command;
 
+import lombok.AllArgsConstructor;
+
 
 @RestController
+@AllArgsConstructor
 public class RestRequestController {
 
-	@Autowired
-	private GetAllBookmarksUseCase getAllBookmarksUseCase;
-	@Autowired
-	private GetLatestCommandResult getLatestCommandResult;
-	@Autowired
-	private ParseCommandUseCase parseCommandUseCase;
-	@Autowired
-	private CacheCommandUseCase cacheCommandUseCase;
+	
+	private final GetAllBookmarksUseCase getAllBookmarksUseCase;
+	private final GetLatestCommandResult getLatestCommandResult;
+	private final ParseCommandUseCase parseCommandUseCase;
+	private final CacheCommandUseCase cacheCommandUseCase;
 
 	
 	@GetMapping("/allBookmarks")

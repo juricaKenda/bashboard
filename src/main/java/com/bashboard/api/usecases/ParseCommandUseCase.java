@@ -7,12 +7,14 @@ import com.bashboard.api.persistence.CommandCache;
 import com.bashboard.commandline.Parser;
 import com.bashboard.commandline.model.commands.Command;
 
+import lombok.AllArgsConstructor;
+
 
 @Component
+@AllArgsConstructor
 public class ParseCommandUseCase {
 
-	@Autowired
-	private Parser parser;
+	private final Parser parser;
 	
 	public Command parseCommand(String commandUnparsed) {
 		return parser.parse(commandUnparsed);
