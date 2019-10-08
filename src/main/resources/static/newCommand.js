@@ -42,7 +42,7 @@ $(document).ready(
                         var html ='';
                         if(response.command.signature === "opn"){
                             window.open(response.result[0], '_blank');
-                        }else if(response.command.signature === "darkmode"){
+                        }else if(response.command.signature === "darkmode" ||response.command.signature === "defaultmode" ){
                             window.open(response.result[0], '_blank');
                             window.close();
                         }else {
