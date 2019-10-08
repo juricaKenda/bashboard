@@ -26,6 +26,8 @@ Each command declared with a prefix (-c) has a list of applicable modificators a
 | --- | --- |
 | **ls**  | Display all command - displays all bookmarks | 
 | **opn**  | Open command - opens a bookmark | 
+| **darkmode** | Opens the dark view of the Bashboard |
+| **defaultmode** | Opens the default view of the Bashboard |
 
 
 ## Currently Implemented Modificators (Argument Prefixes)
