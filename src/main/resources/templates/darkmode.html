@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Bashboard</title>
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="/newCommand.js"></script>
+</head>
+<style>	
+	
+    h1 {
+        font-family: Impact;
+        text-align: center;
+        color:white;
+    }
+    
+    a {
+        font-family: Courier;
+        text-decoration: none;
+        color: white;
+        font-size: 150%;
+    }
+    
+    img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .pageNameAlias:hover {
+        animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+    
+    @keyframes shake {
+        10%,
+        90% {
+            transform: translate3d(-1px, 0, 0);
+        }
+        20%,
+        80% {
+            transform: translate3d(2px, 0, 0);
+        }
+        30%,
+        50%,
+        70% {
+            transform: translate3d(-4px, 0, 0);
+        }
+        40%,
+        60% {
+            transform: translate3d(4px, 0, 0);
+        }
+    }
+    
+    input[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        font-family: Courier;
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+    }
+    
+    input[type=text]:focus {
+        width: 25%;
+        outline: none;
+    }
+    
+    .center-content-wrapper {
+        text-align: center;
+    }
+    
+    table {
+        display: inline-table;
+        text-align: left;
+    }
+ 	.footer{
+ 		text-align: center;
+ 		color: #cc0000;
+ 		font-family: Courier;
+        text-decoration: none;
+        font-size: 150%;
+ 		position:absolute;
+   		bottom:0;
+   		width:100%;
+ 	}
+    
+   
+</style>
+
+<body style="background-color:black;color:white">
+	
+	<h1>Bashboard</h1>
+
+	<form id="commandForm" align="center">
+    	<input type="text" id="unparsedCommand" autocomplete="off" style="background-color:black;color:white">
+	</form>
+	<br>
+
+    <div class="center-content-wrapper" bgcolor="black">
+        <table id="centerCluster" class="centerCluster" align="center">
+        <tbody></tbody>
+        </table>
+    </div>
+</body>
+<footer class="footer" align="center" bgcolor="black">
+	<div id="errorDisplay"></div>
+</footer>
+</html>
