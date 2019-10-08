@@ -63,7 +63,7 @@ public class PageContainerInsertingService {
 		PageContainer facebookContainer = new PageContainer("https://www.facebook.com/favicon.ico","https://www.facebook.com","Facebook",Arrays.asList(Tag.CHILL));
 		PageContainer ebayContainer = new PageContainer("https://www.ebay.com/favicon.ico","https://www.ebay.com","Ebay",Arrays.asList(Tag.SHOPPING,Tag.CHILL));
 		PageContainer amazonContainer = new PageContainer("https://www.amazon.com/favicon.ico","https://www.amazon.com","Amazon",Arrays.asList(Tag.CHILL,Tag.SHOPPING));
-		PageContainer zaraContainer = new PageContainer("http://www.zara.com/favicon.ico","http://www.zara.com","Zara",Arrays.asList(Tag.CHILL,Tag.SHOPPING));
+		PageContainer zaraContainer = new PageContainer("https://www.zara.com/favicon.ico","https://www.zara.com","Zara",Arrays.asList(Tag.CHILL,Tag.SHOPPING));
 		PageContainer bookDepositoryContainer = new PageContainer("https://www.bookdepository.com/favicon.ico","https://www.bookdepository.com","Book Depository",Arrays.asList(Tag.CHILL,Tag.SHOPPING,Tag.LEARNING));
 		PageContainer MITtechnologyReviewContainer = new PageContainer("https://www.technologyreview.com/favicon.ico","https://www.technologyreview.com","MIT Technology Review",Arrays.asList(Tag.LEARNING,Tag.PROGRAMMING));
 		PageContainer businessInsiderContainer = new PageContainer("https://www.businessinsider.com/favicon.ico","https://www.businessinsider.com","Business Insider",Arrays.asList(Tag.CHILL,Tag.BLOGS,Tag.LEARNING));
