@@ -57,6 +57,10 @@ $(document).ready(
                             $("#centerCluster tbody").append(html);
                         }
                                            
+                    },
+                    406:
+                    function(e) {
+                        $("#errorDisplay").html("<strong>"+e.responseJSON.message+"</strong>");
                     }
                 }
             });

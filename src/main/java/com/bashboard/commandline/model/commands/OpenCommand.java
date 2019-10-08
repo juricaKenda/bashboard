@@ -40,7 +40,9 @@ public class OpenCommand extends Command {
 		.filter(makeRelevantPredicateChain(arguments).stream().reduce(each->true,Predicate::and))
 		.map(pageContainer->pageContainer.getLink())
 		.findFirst()
-		.orElse("default");
+		.orElseThrow(()->{
+			return new NoSuchPageFoundException("No such page found!");
+		});
 		return new CommandResponse(Arrays.asList(link),this);
 	}
 	
@@ -49,6 +51,14 @@ public class OpenCommand extends Command {
 				.map(argument -> (Argument)argument)
 				.map(argument->argument.getPredicate())
 				.collect(Collectors.toList());
+	}
+	
+	class NoSuchPageFoundException extends RuntimeException{
+		private String message;
+		public NoSuchPageFoundException(String message) {
+			super(message);
+			this.message = message;
+		}
 	}
 
 }

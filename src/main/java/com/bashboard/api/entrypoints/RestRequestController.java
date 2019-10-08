@@ -42,8 +42,14 @@ public class RestRequestController {
 	
 	@GetMapping("/latestCommandResult")
 	public ResponseEntity<Object> getLatestCommandResult() {
-		Object commandResult = getLatestCommandResult.getLatestCommandResult();
-		return new ResponseEntity<Object>(commandResult,HttpStatus.OK);
+		try {
+			Object commandResult = getLatestCommandResult.getLatestCommandResult();
+			return new ResponseEntity<Object>(commandResult,HttpStatus.OK);
+		}catch(RuntimeException e) {
+			return new ResponseEntity<>(e,HttpStatus.NOT_ACCEPTABLE);
+		}
+
+		
 	}
 	
 	@PostMapping(value="/newCommand",produces= MediaType.APPLICATION_JSON_VALUE, consumes= MediaType.APPLICATION_JSON_VALUE)
